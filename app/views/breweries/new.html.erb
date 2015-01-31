@@ -1,5 +1,9 @@
-<h1>New Brewery</h1>
+<div class="container">
+  <h1>New Brewery</h1>
 
-<%= render 'form' %>
+  <%= render 'form' %>
 
-<%= link_to 'Back', breweries_path %>
+  <%= link_to breweries_path, class: 'btn btn-danger' do %>
+        <i class="glyphicon glyphicon-arrow-left"></i> Back
+  <% end %>
+</div>

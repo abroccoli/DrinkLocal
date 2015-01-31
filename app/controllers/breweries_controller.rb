@@ -69,6 +69,6 @@ class BreweriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def brewery_params
-      params.require(:brewery).permit(:name, :location, :url, :tours_?, :hours, :state)
+      params.require(:brewery).permit(:name, :location, :url, :tours_?, :hours)
     end
 end
