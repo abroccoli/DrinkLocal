@@ -1,0 +1,79 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @brewery.name %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @brewery.location %>
+</p>
+
+<p>
+  <strong>About:</strong>
+  <%= @brewery.about %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @brewery.url %>
+</p>
+
+<p>
+  <strong>Tours ?:</strong>
+  <%= @brewery.tours_? %>
+</p>
+
+<p>
+  <strong>Hours:</strong>
+  <%= @brewery.hours %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @brewery.state %>
+</p>
+
+<h2>Reviews</h2>
+<% @brewery.reviews.each do |review| %>
+  <p>
+    <strong>Title:</strong>
+    <%= review.title %>
+  </p>
+
+  <p>
+    <strong>Review:</strong>
+    <%= review.body %>
+  </p>
+
+  <p>
+    <strong>Rating:</strong>
+    <%= "#{review.rating}/5" %>
+  </p>
+<% end %>
+
+
+<h2>Add a review:</h2>
+<%= form_for([@brewery, @brewery.reviews.build]) do |f| %>
+  <p>
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :body %><br>
+    <%= f.text_area :body %>
+  </p>
+
+  <p>
+    <%= f.label :rating %><br>
+    <%= f.text_area :rating %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>
+
+<%= link_to 'Edit', edit_brewery_path(@brewery) %> |
+<%= link_to 'Back', breweries_path %>
