@@ -1,13 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 
-<h1>Please Select a State:</h1>
-<% @states.each do |state| %>
-    <%= select_tag :state, options_for_select(state.abrev) %>
-<%end%>
-
-
-
 <h1>Listing States</h1>
 
 <table>
@@ -24,9 +17,7 @@
       <tr>
         <td><%= state.name %></td>
         <td><%= state.abrev %></td>
-        <td><%= link_to 'Show', state %></td>
-        <td><%= link_to 'Edit', edit_state_path(state) %></td>
-        <td><%= link_to 'Destroy', state, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Breweries', state_breweries_path(state.id) %></td>
       </tr>
     <% end %>
   </tbody>

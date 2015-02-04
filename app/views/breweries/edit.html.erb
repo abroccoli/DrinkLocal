@@ -2,9 +2,58 @@
 
 <h1>Editing Brewery</h1>
 
-<%= render 'form' %>
+<%= form_for(@brewery, html: {class: 'form-group'}) do |f| %>
+  <% if @brewery.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@brewery.errors.count, "error") %> prohibited this brewery from being saved:</h2>
 
-  <%= link_to breweries_path, class: 'btn btn-danger' do %>
+      <ul>
+      <% @brewery.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= f.label :name, class: 'col-sm-2 control-label' %><br>
+      <div class="col-sm-10">
+        <%= f.text_field :name %>
+      </div>
+  </div>
+  <div class="field form-group">
+    <%= f.label :location, class: 'col-sm-2 control-label' %><br>
+      <div class="col-sm-10">
+        <%= f.text_field :location %>
+      </div>
+  </div>
+  <div class="field form-group">
+    <%= f.label :url, class: 'col-sm-2 control-label' %><br>
+      <div class="col-sm-10">
+        <%= f.text_field :url %>
+      </div>
+  </div>
+  <div class="field form-group">
+    <%= f.label :tours_?, class: 'col-sm-2 control-label' %><br>
+      <div class="col-sm-10">
+        <%= f.check_box :tours_? %>
+      </div>
+  </div>
+  <div class="field form-group">
+    <%= f.label :hours, class: 'col-sm-2 control-label' %><br>
+      <div class="col-sm-10">
+        <%= f.text_field :hours %>
+      </div>
+  </div>
+
+  <div class="actions form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default"><%= f.submit %></button>
+    </div>
+  </div>
+<% end %>
+
+  <%= link_to state_breweries_path(:state_id), class: 'btn btn-danger' do %>
     <i class="glyphicon glyphicon-arrow-left"></i> Back
   <% end %>
 

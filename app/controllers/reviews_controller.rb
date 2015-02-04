@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
   def create
       @brewery = Brewery.find(params[:brewery_id])
       @review = @brewery.reviews.create(review_params)
-      redirect_to brewery_path(@brewery)
+      redirect_to state_breweries_path(@brewery)
   end
 
 

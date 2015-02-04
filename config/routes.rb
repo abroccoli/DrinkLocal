@@ -1,11 +1,18 @@
 Rails.application.routes.draw do
-  resources :states do
-    resources :breweries, only: [:index]
+  shallow do
+    resources :states do
+      resources :breweries do
+        resources :reviews
+      end
+    end
   end
+  # resources :states do
+  #   resources :breweries, only: [:index, :new, :create]
+  # end
 
-  resources :breweries do
-      resources :reviews
-  end
+  # resources :breweries do
+  #     resources :reviews
+  # end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

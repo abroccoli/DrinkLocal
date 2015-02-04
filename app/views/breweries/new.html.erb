@@ -3,7 +3,7 @@
 
   <%= render 'form' %>
 
-  <%= link_to breweries_path, class: 'btn btn-danger' do %>
+  <%= link_to state_breweries_path(params[:state_id]), class: 'btn btn-danger' do %>
         <i class="glyphicon glyphicon-arrow-left"></i> Back
   <% end %>
 </div>

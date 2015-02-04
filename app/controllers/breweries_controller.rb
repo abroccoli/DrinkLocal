@@ -4,7 +4,8 @@ class BreweriesController < ApplicationController
   # GET /breweries
   # GET /breweries.json
   def index
-    @breweries = Brewery.all
+    @state = State.find(params[:state_id])
+    @breweries = @state.breweries
   end
 
   # GET /breweries/1
@@ -14,7 +15,8 @@ class BreweriesController < ApplicationController
 
   # GET /breweries/new
   def new
-    @brewery = Brewery.new
+    @state = State.find(params[:state_id])
+    @brewery = @state.breweries.new
   end
 
   # GET /breweries/1/edit
@@ -25,7 +27,7 @@ class BreweriesController < ApplicationController
   # POST /breweries.json
   def create
     @brewery = Brewery.new(brewery_params)
-
+    @brewery.state = State.find(params[:state_id])
     respond_to do |format|
       if @brewery.save
         format.html { redirect_to @brewery, notice: 'Brewery was successfully created.' }
